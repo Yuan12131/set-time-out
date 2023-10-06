@@ -24,6 +24,7 @@
       background-color: #F9F9F9;
       border: solid black 1px;
       margin-left: 200px;
+      position: relative;
     }
     #root > div:nth-child(2){
       margin-left: 50px;
@@ -64,7 +65,7 @@
   <div id="root">
     <div id="game"></div>
     <div>
-      RANK 1st SCORE : 30
+      RANK 1st SCORE : 30000
       <div id = "time">제한시간 : 30초</div>
       <div id="score"></div>
       <button id="play">PLAY</div>
@@ -86,6 +87,10 @@
     const fieldRect = game.getBoundingClientRect();
         console.log(fieldRect)
 
+        game.addEventListener('click', (e) => {
+  console.log(`<div>screenX, Y: (${e.screenX}, ${e.screenY})</div>`)
+        })
+
     // play 버튼 클릭했을 때 interval을 활요해서 도트 생성되는 함수
     play.addEventListener('click', function(){
       make = setInterval(function(){
@@ -95,16 +100,11 @@
         create.style.height = "100px";
         create.style.backgroundColor = "black"
         create.style.borderRadius = "50%";
-        create.style.position = "relative";
-
-        
-        // 점들이 위치할 영역의 dom 요소 변수 선언
-        const fieldRect = game.getBoundingClientRect();
-        console.log(fieldRect)
+        create.style.position = "absolute";
 
         // 랜덤 위치값 변수 선언
-        const x = Math.random() * (fieldRect.width + 0) - 0;
-        const y = Math.random() * (fieldRect.height + 0) - 0;
+        const x = Math.random() * (700);
+        const y = Math.random() * (700);
 
         create.style.left = x + "px"
         create.style.top = y + "px"
@@ -122,7 +122,7 @@
             score.innerHTML = "SCORE : " + val + "점";
           }
         
-      }, 1000)
+      }, 500)
       
       // 30s 후 interval 종료
       setTimeout(function(){
