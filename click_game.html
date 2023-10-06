@@ -92,11 +92,7 @@
     const fieldRect = game.getBoundingClientRect();
         console.log(fieldRect)
 
-        game.addEventListener('click', (e) => {
-  console.log(`<div>screenX, Y: (${e.screenX}, ${e.screenY})</div>`)
-        })
-
-    // play 버튼 클릭했을 때 interval을 활요해서 도트 생성되는 함수
+    // play 버튼 클릭했을 때 interval을 활용해 도트 생성되는 함수
     play.addEventListener('click', function(){
       make = setInterval(function(){
       create = document.createElement("div");
