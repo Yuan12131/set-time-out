@@ -65,8 +65,39 @@
       <button id="play">PLAY</div>
     </div>
   </div>
+  <script>
+    
+    root = document.getElementById("root")
+    console.dir(root)
 
- 
+    game = document.getElementById("game")
+    
+    var make = null;
+
+    const play = document.getElementById("play")
+    console.log(play);
+
+    // const field = document.querySelector('.field');
+    // const fieldRect = field.getBoundingClientRect();
+
+    // const x = Math.random() * (fieldRect.width - 0) + 0;
+    // const y = Math.random() * (fieldRect.height - 0) + 0;
+
+    play.addEventListener('click', function(){
+      make = setInterval(function(){
+      create = document.createElement("div");
+      game.appendChild(create);
+        create.style.width = "20px";
+        create.style.height = "20px";
+        create.style.backgroundColor = "black"
+        create.style.borderRadius = "50%";
+        create.style.position = "relative";
+        create.top = 10 + "px"
+        create.left = 10+ "px"
+      }, 1000)
+    })
+
+    
   </script>
 </body>
 </html>
