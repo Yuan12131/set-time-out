@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #root{
+      width: 100vw;
+      height: 100vh;
+      background-color: azure;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="sosa"></div>
+    <div id="pause">PAUSE</div>
+  </div>
+
+  <script>
+    const sosa = document.getElementById("sosa");
+    console.log(sosa);
+
+    const pause = document.getElementById("pause")
+    console.log(pause);
+
+    sosa.style.width = "100px";
+    sosa.style.height = "100px";
+    sosa.style.backgroundColor = "black";
+    sosa.style.position = "absolute";
+
+    pause.style.width = "50px";
+    pause.style.height = "50px";
+    pause.style.backgroundColor = "tomato";
+    pause.style.position = "absolute";
+    pause.style.top = "200px"
+
+    let mingoo = 0;
+    let wt = 10;
+
+    var move = null;
+    var increase = null;
+
+    root = document.getElementById("root")
+    console.dir(root)
+
+    quater = root.clientWidth /4;
+    half = root.clientWidth / 2;
+
+    sosa.addEventListener('click', function(){
+      move = setInterval(function(){
+        sosa.style.top = mingoo + "px"
+        sosa.style.left = mingoo + "px"
+        sosa.style.backgroundColor = "black"
+        mingoo++;
+
+        if(mingoo >= quater){
+          sosa.style.backgroundColor = "powderblue"
+        } 
+        if (mingoo >= half){
+          clearInterval(move)
+          mingoo = 0;
+        }
+
+      }, 10);
+    })
+
+    sosa.addEventListener('click', function(){
+      increase = setInterval(function(){
+        sosa.style.width = wt + "px"
+        sosa.style.height = wt + "px"
+        wt++;
+
+      if (wt >= 200){
+          clearInterval(increase)
+          wt = 10;
+        }
+
+      }, 30);
+    })
+
+    pause.addEventListener('click', function(){
+      clearInterval(move)
+      mingoo = 0;
+
+      clearInterval(increase)
+      wt = 0;
+    })
+
+
+
+    // 애니메이션을 코드로 구현
+
+  </script>
+</body>
+</html>
