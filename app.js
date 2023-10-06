@@ -11,6 +11,7 @@
 // }, 1000);
 // settimeout은 스크립트 순서를 무시 : 밍구-> 뭉기-> 소사 순으로 출력 (순서대로 : 동기)
 
+
 setTimeout(function(){
   console.log('첫번째 소사');
 
@@ -24,6 +25,6 @@ setTimeout(function(){
   }, 2000);
 
 }, 3000);
-callback으로 settimeout 사용해서 순서 변경 : 소사 -> 뭉기 -> 밍구 (시간 단위로 : 비동기)
+// callback으로 settimeout 사용해서 순서 변경 : 소사 -> 뭉기 -> 밍구 (시간 단위로 : 비동기)
 
 
