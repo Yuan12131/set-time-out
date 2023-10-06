@@ -61,7 +61,7 @@
     <div>
       RANK 1st SCORE : 100000000
       <div id = "time">제한시간 : 60초</div>
-      <div id="score">점수 : 초</div>
+      <div id="score"></div>
       <button id="play">PLAY</div>
     </div>
   </div>
@@ -74,7 +74,8 @@
     const play = document.getElementById("play")
     console.log(play);
     
-
+    var score = document.getElementById("score")
+    var val = score.innerHTML
     
     var make = null;
 
@@ -99,6 +100,14 @@
 
         create.style.left = x + "px"
         create.style.top = y + "px"
+
+        // 클릭한 점은 화면에서 사라지는 이벤트추가
+        create.addEventListener('click', function(event){
+          event.target.remove()
+        })
+
+
+        
 
       }, 1000)
     })
