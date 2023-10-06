@@ -23,7 +23,7 @@
       height: 800px;
       background-color: #F9F9F9;
       border: solid black 1px;
-      margin-left: 200px;
+      /* margin-left: 200px; */
     }
     #root > div:nth-child(2){
       margin-left: 50px;
@@ -60,43 +60,48 @@
     <div id="game"></div>
     <div>
       RANK 1st SCORE : 100000000
-      <div id = "time">제한시간 : 5초</div>
+      <div id = "time">제한시간 : 60초</div>
       <div id="score">점수 : 초</div>
       <button id="play">PLAY</div>
     </div>
   </div>
   <script>
-    
     root = document.getElementById("root")
     console.dir(root)
 
-    game = document.getElementById("game")
+    const game = document.getElementById("game")
+    
+    const play = document.getElementById("play")
+    console.log(play);
+    
+
     
     var make = null;
 
-    const play = document.getElementById("play")
-    console.log(play);
-
-    // const field = document.querySelector('.field');
-    // const fieldRect = field.getBoundingClientRect();
-
-    // const x = Math.random() * (fieldRect.width - 0) + 0;
-    // const y = Math.random() * (fieldRect.height - 0) + 0;
-
+    // play 버튼 클릭했을 때 interval을 활요해서 도트 생성되는 함수
     play.addEventListener('click', function(){
       make = setInterval(function(){
       create = document.createElement("div");
       game.appendChild(create);
-        create.style.width = "20px";
-        create.style.height = "20px";
+        create.style.width = "30px";
+        create.style.height = "30px";
         create.style.backgroundColor = "black"
         create.style.borderRadius = "50%";
         create.style.position = "relative";
-        create.top = 10 + "px"
-        create.left = 10+ "px"
+        
+        // 점들이 위치할 영역의 dom 요소 변수 선언
+        const fieldRect = game.getBoundingClientRect();
+        console.log(fieldRect)
+
+        // 랜덤 위치값 변수 선언
+        const x = Math.random() * (game.clientWidth - 0) + 0;
+        const y = Math.random() * (game.clientHeight - 0) + 0;
+
+        create.style.left = x + "px"
+        create.style.top = y + "px"
+
       }, 1000)
     })
-
     
   </script>
 </body>
