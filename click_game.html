@@ -106,7 +106,13 @@
           event.target.remove()
         })
 
-
+        // 점 클릭할 때마다 카운팅하여 출력하는 이벤트 추가
+        create.addEventListener('click', counter);
+          function counter(){
+            val++;
+            console.log(val);
+            score.innerHTML = "SCORE : " + val + "점";
+          }
         
 
       }, 1000)
