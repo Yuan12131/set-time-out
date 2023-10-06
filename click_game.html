@@ -23,7 +23,7 @@
       height: 800px;
       background-color: #F9F9F9;
       border: solid black 1px;
-      /* margin-left: 200px; */
+      margin-left: 200px;
     }
     #root > div:nth-child(2){
       margin-left: 50px;
@@ -51,7 +51,12 @@
       background-color: #FF6666;
       border-radius: 20%;
       margin: 20px;
+    }
 
+    #game > div {
+      background-image: url("https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   </style>
 </head>
@@ -59,8 +64,8 @@
   <div id="root">
     <div id="game"></div>
     <div>
-      RANK 1st SCORE : 100000000
-      <div id = "time">제한시간 : 60초</div>
+      RANK 1st SCORE : 30
+      <div id = "time">제한시간 : 30초</div>
       <div id="score"></div>
       <button id="play">PLAY</div>
     </div>
@@ -78,25 +83,28 @@
     var val = score.innerHTML
     
     var make = null;
+    const fieldRect = game.getBoundingClientRect();
+        console.log(fieldRect)
 
     // play 버튼 클릭했을 때 interval을 활요해서 도트 생성되는 함수
     play.addEventListener('click', function(){
       make = setInterval(function(){
       create = document.createElement("div");
       game.appendChild(create);
-        create.style.width = "30px";
-        create.style.height = "30px";
+        create.style.width = "100px";
+        create.style.height = "100px";
         create.style.backgroundColor = "black"
         create.style.borderRadius = "50%";
         create.style.position = "relative";
+
         
         // 점들이 위치할 영역의 dom 요소 변수 선언
         const fieldRect = game.getBoundingClientRect();
         console.log(fieldRect)
 
         // 랜덤 위치값 변수 선언
-        const x = Math.random() * (game.clientWidth - 0) + 0;
-        const y = Math.random() * (game.clientHeight - 0) + 0;
+        const x = Math.random() * (fieldRect.width + 0) - 0;
+        const y = Math.random() * (fieldRect.height + 0) - 0;
 
         create.style.left = x + "px"
         create.style.top = y + "px"
@@ -114,8 +122,13 @@
             score.innerHTML = "SCORE : " + val + "점";
           }
         
-
       }, 1000)
+      
+      // 30s 후 interval 종료
+      setTimeout(function(){
+       clearInterval(make);
+      }, 30000);
+
     })
     
   </script>
