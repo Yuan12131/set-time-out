@@ -81,16 +81,12 @@
     console.dir(root)
 
     const game = document.getElementById("game")
-    
     const play = document.getElementById("play")
-    console.log(play);
     
     var score = document.getElementById("score")
     var val = score.innerHTML
     
     var make = null;
-    const fieldRect = game.getBoundingClientRect();
-        console.log(fieldRect)
 
     // play 버튼 클릭했을 때 interval을 활용해 도트 생성되는 함수
     play.addEventListener('click', function(){
@@ -110,19 +106,14 @@
         create.style.left = x + "px"
         create.style.top = y + "px"
 
-        // 클릭한 점은 화면에서 사라지는 이벤트추가
-        create.addEventListener('click', function(event){
-          event.target.remove()
-        })
+        // 클릭한 점은 화면에서 사라지는 이벤트추가 + 점 클릭할 때마다 카운팅하여 출력하는 이벤트 추가
+        create.addEventListener('click', function(event) {
+          event.target.remove();
+          val++;
+          console.log(val);
+          score.innerHTML = "SCORE : " + val + "점";
+        });
 
-        // 점 클릭할 때마다 카운팅하여 출력하는 이벤트 추가
-        create.addEventListener('click', counter);
-          function counter(){
-            val++;
-            console.log(val);
-            score.innerHTML = "SCORE : " + val + "점";
-          }
-        
       }, 500)
       
       // 30s 후 interval 종료
